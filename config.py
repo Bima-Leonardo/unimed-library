@@ -1,9 +1,6 @@
-import mysql.connector
+import streamlit as str
 
-def connect_db():
-    return mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="",
-        database="digital_library"
-    )
+def get_connection():
+    # Mengambil data koneksi otomatis dari Streamlit Secrets Cloud
+    conn = str.connection("mysql")
+    return conn
