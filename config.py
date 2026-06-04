@@ -1,6 +1,13 @@
-import sqlite3
+import streamlit as st
+import mysql.connector
 
 def connect_db():
-    # Membuka/membuat database langsung di dalam server
-    conn = sqlite3.connect("digital_library.db")
+    secrets = st.secrets["connections"]["mysql"]
+    conn = mysql.connector.connect(
+        host=secrets["host"],
+        port=secrets["port"],
+        database=secrets["database"],
+        user=secrets["username"],
+        password=secrets["password"]
+    )
     return conn
