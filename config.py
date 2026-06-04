@@ -1,15 +1,6 @@
-import streamlit as st
-import mysql.connector
+import sqlite3
 
 def connect_db():
-    # Mengambil data koneksi otomatis dari Streamlit Secrets Cloud
-    secrets = st.secrets["connections"]["mysql"]
-    
-    conn = mysql.connector.connect(
-        host=secrets["host"],
-        port=secrets["port"],
-        database=secrets["database"],
-        user=secrets["username"],
-        password=secrets["password"]
-    )
+    # Membuka/membuat database langsung di dalam server
+    conn = sqlite3.connect("digital_library.db")
     return conn
